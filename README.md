@@ -1,7 +1,8 @@
-![デモ動画](assets/scene01.gif)
 
-<img width="768" height="1376" alt="Man_meeting_light_entity_20261006155742" src="https://github.com/user-attachments/assets/24887479-31d5-4ac4-aaf5-4a80553a7035" />
----
+<img src="assets/scene01.gif" width="768" alt="デモ動画">
+
+<img src="https://github.com/user-attachments/assets/24887479-31d5-4ac4-aaf5-4a80553a7035" width="768" alt="Man_meeting_light_entity_20261006155742">
+
 # 👋 Hi there, I'm Satoshi Matsuda (targetter009)
 
 沖縄の地より、対話を通じて思考を紡ぎ、自らのポータルサイトを構築・発信しています。
