@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'videos/*.mp4' # videosフォルダ内に.mp4が追加された時に起動
+      - 'videos/*.mov'
+      - 'videos/*.webm'
 
 jobs:
   convert:
