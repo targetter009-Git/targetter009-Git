@@ -13,6 +13,5 @@
 
 ## 2. 対話のあゆみ（自動更新エリア）
 <!-- AUTO-GENERATED-SUMMARY:START -->
-- **Unknown Date:** <img src="assets/scene01.gif" width="768" alt="デモ動画">
 - **2026-10-08-AM:** 飲茶坊さとしの指向哲学（Oriented-Philosophia）対話録
 <!-- AUTO-GENERATED-SUMMARY:END -->
