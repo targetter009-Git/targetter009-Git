@@ -13,7 +13,6 @@
 
 ## 2. 対話のあゆみ（自動更新エリア）
 <!-- AUTO-GENERATED-SUMMARY:START -->
-- **2026-10-08 AM:** ZohoメールとGitHubの連携、および「対話 ➔ 台本 ➔ フィルム ➔ 映写」の指向哲学アーキテクチャの確立。
-- **2026-10-07:** 沖縄の風景（Okinawa scene）をイメージした画像・音声生成ワークフローの実験とパイプラインの調整。
-- **2026-10-06:** 指向哲学（Oriented-Philosophia）の初期台本策定とマルチメディアアセット生成。
+- **Unknown Date:** <img src="assets/scene01.gif" width="768" alt="デモ動画">
+- **2026-10-08-AM:** 飲茶坊さとしの指向哲学（Oriented-Philosophia）対話録
 <!-- AUTO-GENERATED-SUMMARY:END -->
