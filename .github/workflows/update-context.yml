@@ -1,0 +1,32 @@
+name: Update CONTEXT.md
+
+on:
+  push:
+    paths:
+      - 'README.*.md' # README.2026.10.XX.md 等がプッシュされた時に起動
+
+jobs:
+  update-context:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run update_context.py
+        run: python scripts/update_context.py
+
+      - name: Commit and Push Updated CONTEXT.md
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated: Update CONTEXT.md summary"
+          file_pattern: "CONTEXT.md"
+          git_action_options: '--no-verify'
+          push_options: '--force-with-lease'
