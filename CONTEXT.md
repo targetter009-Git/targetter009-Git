@@ -88,4 +88,20 @@
 
 ---
 
+## 2026-10-09 マルチメディア生成プロセスの「マネージャー方式（manager.py）」への一本化
+
+### 1. 統括マネージャー `manager.py` の導入とエラーハンドリング
+個別スクリプトの乱立や手動修正によるミスコーディングを防ぐため、画像生成・音声合成・動画結合の全プロセスを安全に統括・例外処理（エラートラップ）する司令塔として **`manager.py`** をルート直下に導入。
+- 各ステップ（Image Generation, Speech Generation, Movie Generation）を順次安全に呼び出し、万が一エラーが発生した際もトレースを容易化。
+
+### 2. GitHub Actions ワークフローの集約と整理
+- 旧来の個別ワークフロー（`generate-images.yml`, `generate-audio.yml`, `generate-movies.yml`）は整理の上で `.trash/` へ安全に退避。
+- 代わりに、`manager.py` をワンストップで実行・コミットする統合ワークフロー **`manager-workflow.yml`** へ刷新。
+
+### 3. シアターポータル投射（Build Theater Web Portal）との連携維持
+- 生成された全マルチメディアアセットは最終工程の `build.yml`（スクリプト `scripts/built.py`）へ引き渡され、従来通りポータル画面（`index.html`）を構築して GitHub Pages へ自動公開。
+- `pages-build-deployment` は GitHub Pages の公式デプロイ基板として引き続き自動稼働。
+
+---
+
 
