@@ -71,4 +71,21 @@
 
 ---
 
+## 2026-10-09 画像・音声・動画の完全自動生成パイプラインの確立
+
+### 1. マルチメディア全自動生成スクリプト群の導入
+`ryubo-style` リポジトリのルート直下に以下の実働スクリプトおよび依存定義を配置し、高度なマルチメディア自動生成を実現。
+- **`requirements.txt`**: `gtts`（音声合成）, `requests`（画像取得）, `Pillow`（画像処理）, `moviepy`（動画結合）の各外部ライブラリを指定。
+- **`generate_images.py`**: 台本内容をもとにプロンプト（指示文）を自動構築し、API経由で16:9シネマティック画像を自動調達・保存。
+- **`generate_speech.py`**: シナリオテキストを解析し、gTTSを用いて自然な日本語音声トラック（.mp3）を自動合成。
+- **`generate_movies.py`**: 生成された12コマの画像（各15秒）と音声トラックを MoviePy を用いて結合し、音声付き完成動画（.mp4）をレンダリング。
+
+### 2. GitHub Actions ワークフローの刷新
+`.github/workflows/` 配下の各 YAML 設定ファイル（`generate-images.yml`, `generate-audio.yml`, `generate-movies.yml`, `build.yml`）に `requirements.txt` の自動インストール処理を組み込み、クラウド上での一連の全自動バトンリレーを完全に安定化。
+
+### 3. シアターポータルへの自動投旗
+最終工程の `build.yml`（スクリプト `scripts/built.py`）により、生成された全アセット（画像・音声・動画）を束ねた最新のポータル画面（`index.html`）が GitHub Pages（targetter009.com）へ自動デプロイ・公開される仕組みを維持。
+
+---
+
 
