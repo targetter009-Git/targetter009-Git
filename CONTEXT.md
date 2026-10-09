@@ -43,3 +43,32 @@
      - `generate-audio.yml`（音声生成）
      - `generate-movies.yml`（動画結合・出力）
    - **`scripts/built.py`**: 古いフィルムを `.trash/` へ安全退避させ、12カット絵コンテ構造を読み込んで `index.html`（ポータル）へ投射する映写機。
+  
+---
+
+## 2026-10-09 動画生成パイプラインとGitHub Actions構造の確定
+
+### 1. 動画生成の自動化パイプライン（4つのYAMLワークフロー）
+`ryubo-style` リポジトリの `.github/workflows/` 配下に配置された4つのYAMLファイルが連携し、原稿から最終ポータル更新までを全自動で実行するバトンリレー構造を確立。
+
+1. **`generate-images.yml`**
+   - **意義:** 台本（`Film.*.md`）の更新を検知し、`generate_images.py` を起動。起承転結（4章×3コマ＝12コマ）の16:9静止画アセットを `assets/images/` へ自動出力・保存する。
+2. **`generate-audio.yml`**
+   - **意义:** 台本（`Film.*.md`）の更新を検知し、`generate_speech.py` を起動。劇中ボイス（Pattern A/B）の音声トラック（.mp3）を `assets/audios/` へ自動出力・保存する。
+3. **`generate-movies.yml`**
+   - **意義:** 画像・音声アセットの更新を検知し、`ffmpeg` 環境下で `generate_movies.py` を起動。12コマ画像と音声を結合し、完成動画（.mp4）を `assets/videos/` へ自動生成・保存する。
+4. **`build.yml`**
+   - **意義:** すべてのアセットおよびスクリプト（`scripts/built.py`）の更新を受け、最終工程として `index.html`（シアターポータル）を再構築して公開・投射する。
+
+### 2. ルート直下実行スクリプトの統一
+ワークフローから呼び出される以下の3つの実働Pythonスクリプトを `ryubo-style` のルート直下に配置・一括管理する。
+- `generate_images.py`（12コマ16:9画像生成）
+- `generate_speech.py`（音声トラック生成）
+- `generate_movies.py`（16:9動画結合生成）
+
+### 3. ファイル退避・整理ルール
+- 旧バージョンのファイル（`Film.2026.10.08.AM.md` 等）は、直接削除・滅失させるのではなく、`built.py` や手動操作によって必ず `.trash/` フォルダへ移動・保持させ、思考のあゆみと安全性を担保すること。
+
+---
+
+
